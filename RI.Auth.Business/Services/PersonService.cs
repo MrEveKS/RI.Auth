@@ -1,6 +1,7 @@
 ﻿using Mapster;
-using RI.Auth.Common.Models;
+using RI.Auth.Commons.Models;
 using RI.Auth.DataAccess;
+using RI.Auth.Domain.Models;
 
 namespace RI.Auth.Business.Services;
 
@@ -18,7 +19,7 @@ internal sealed class PersonService : IPersonService
     {
         try
         {
-            var entity = dto.Adapt<Domain.Models.Person>();
+            var entity = dto.Adapt<Person>();
             await _work.Person.Add(entity, token);
             await _work.SaveChangesAsync(token);
         }
@@ -27,5 +28,5 @@ internal sealed class PersonService : IPersonService
             Console.WriteLine(e);
             throw;
         }
-    } 
+    }
 }

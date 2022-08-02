@@ -6,7 +6,7 @@ internal abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
     where TEntity : class
 {
     protected readonly AuthContext _context;
-    
+
     protected BaseRepository(AuthContext context)
     {
         _context = context;

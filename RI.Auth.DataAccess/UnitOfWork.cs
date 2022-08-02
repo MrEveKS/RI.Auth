@@ -14,6 +14,9 @@ internal sealed class UnitOfWork : IUnitOfWork
     }
 
     public IPersonRepository Person => _personRepository.Value;
+
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
-        => await _context.SaveChangesAsync(cancellationToken);
+    {
+        await _context.SaveChangesAsync(cancellationToken);
+    }
 }

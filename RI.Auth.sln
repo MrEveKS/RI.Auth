@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RI.Auth.DataAccess", "RI.Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RI.Auth.Domain", "RI.Auth.Domain\RI.Auth.Domain.csproj", "{70227BCF-2D40-46BA-8710-50FCF1BD7F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RI.Auth.Common", "RI.Auth.Common\RI.Auth.Common.csproj", "{323090C1-0404-47D1-89BD-525DE888D0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RI.Auth.Commons", "RI.Auth.Commons\RI.Auth.Commons.csproj", "{323090C1-0404-47D1-89BD-525DE888D0BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RI.Auth.Business", "RI.Auth.Business\RI.Auth.Business.csproj", "{18F57593-99FC-498E-BC1F-ACC9B87B411D}"
 EndProject

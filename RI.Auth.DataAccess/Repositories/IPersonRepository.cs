@@ -1,5 +1,4 @@
-﻿using RI.Auth.Domain;
-using RI.Auth.Domain.Models;
+﻿using RI.Auth.Domain.Models;
 
 namespace RI.Auth.DataAccess.Repositories;
 

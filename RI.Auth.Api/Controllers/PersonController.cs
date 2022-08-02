@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RI.Auth.Business.Services;
-using RI.Auth.Common.Models;
+using RI.Auth.Commons.Models;
 
 namespace RI.Auth.Controllers;
 

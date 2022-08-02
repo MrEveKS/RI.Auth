@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RI.Auth.Common\RI.Auth.Common.csproj" />
+        <ProjectReference Include="..\RI.Auth.Commons\RI.Auth.Commons.csproj"/>
     </ItemGroup>
 
 </Project>

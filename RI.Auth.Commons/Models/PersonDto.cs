@@ -1,4 +1,4 @@
-﻿namespace RI.Auth.Common.Models;
+﻿namespace RI.Auth.Commons.Models;
 
 public sealed class PersonDto
 {

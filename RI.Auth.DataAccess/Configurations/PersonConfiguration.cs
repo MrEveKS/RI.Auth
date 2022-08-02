@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RI.Auth.Domain;
 using RI.Auth.Domain.Models;
 
 namespace RI.Auth.DataAccess.Configurations;
@@ -25,7 +24,7 @@ internal sealed class PersonConfiguration : IEntityTypeConfiguration<Person>
 
         builder.Property(e => e.Description)
             .HasColumnType("character varying(500)");
-        
+
         builder.Property(e => e.Age);
 
         builder.Property(e => e.Created)

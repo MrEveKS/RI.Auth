@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RI.Auth.Business\RI.Auth.Business.csproj" />
+        <ProjectReference Include="..\RI.Auth.Business\RI.Auth.Business.csproj"/>
     </ItemGroup>
-    
+
 </Project>
