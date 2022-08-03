@@ -1,4 +1,4 @@
-﻿using RI.Auth.Common.Abstractions;
+﻿using RI.Commons.Abstraction;
 
 namespace RI.Auth.Domain.Models;
 
