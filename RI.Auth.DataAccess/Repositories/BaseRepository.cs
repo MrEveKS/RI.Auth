@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace RI.Auth.DataAccess.Repositories;
 
@@ -18,7 +19,14 @@ internal abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
             .ToListAsync(cancellationToken);
     }
 
-    public async ValueTask Add(TEntity entity, CancellationToken cancellationToken)
+    public async Task<TEntity?> GetOne(
+    Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+    {
+        return await _context.Set<TEntity>()
+                .FirstOrDefaultAsync(predicate, cancellationToken);
+    }
+    
+        public async ValueTask Add(TEntity entity, CancellationToken cancellationToken)
     {
         await _context.Set<TEntity>()
             .AddAsync(entity, cancellationToken);

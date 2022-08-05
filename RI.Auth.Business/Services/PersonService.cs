@@ -15,13 +15,108 @@ internal sealed class PersonService : IPersonService
         _work = work;
     }
 
-    public async Task Add(PersonDto dto, CancellationToken token = default)
+    public async Task Add(PersonAddDto dto, CancellationToken token = default)
     {
         try
         {
             var entity = dto.Adapt<Person>();
             await _work.Person.Add(entity, token);
             await _work.SaveChangesAsync(token);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public async Task<bool> Update(string? id, PersonUpdateDto dto, CancellationToken token = default)
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                id = id.Trim();
+                var entity = await _work.Person
+                    .GetOne(x => x.Id == id, token);
+                if (entity is null)
+                {
+                    return false;
+                }
+                entity.FirstName = dto.FirstName;
+                entity.LastName = dto.LastName;
+                entity.MiddleName = dto.MiddleName;
+                entity.Age = dto.Age;
+                entity.Description = dto.Description;
+                _work.Person.Update(entity);
+                await _work.SaveChangesAsync(token);
+                return true;
+            }
+            return false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    public async Task<bool> Remove(string? id, CancellationToken token = default)
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                id = id.Trim();
+                var entity = await _work.Person
+                    .GetOne(x => x.Id == id, token);
+                if (entity is null)
+                {
+                    return false;
+                }
+                _work.Person.Remove(entity);
+                await _work.SaveChangesAsync(token);
+                return true;
+            }
+            return false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    public async Task<PersonDto?> GetOne(string? id, CancellationToken token = default)
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                id = id.Trim();
+                var entity = await _work.Person
+                    .GetOne(x => x.Id == id, token);
+                if (entity is null)
+                {
+                    return null;
+                }
+                return entity.Adapt<PersonDto>();
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public async Task<List<PersonListDto>?> GetAll(CancellationToken token = default)
+    {
+
+        try
+        {
+            var entities = await _work.Person
+                .GetAll(token);
+            return entities.Adapt<List<PersonListDto>?>();
         }
         catch (Exception e)
         {

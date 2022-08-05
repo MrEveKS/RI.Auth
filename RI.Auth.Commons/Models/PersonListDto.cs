@@ -1,6 +1,6 @@
 ﻿namespace RI.Auth.Commons.Models
 {
-    public sealed class PersonDto
+    public sealed class PersonListDto
     {
         public string Id { get; set; }
         public string FirstName { get; set; }
