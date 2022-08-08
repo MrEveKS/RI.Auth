@@ -34,25 +34,24 @@ internal sealed class PersonService : IPersonService
     {
         try
         {
-            if (!string.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(id))
             {
-                id = id.Trim();
-                var entity = await _work.Person
-                    .GetOne(x => x.Id == id, token);
-                if (entity is null)
-                {
-                    return false;
-                }
-                entity.FirstName = dto.FirstName;
-                entity.LastName = dto.LastName;
-                entity.MiddleName = dto.MiddleName;
-                entity.Age = dto.Age;
-                entity.Description = dto.Description;
-                _work.Person.Update(entity);
-                await _work.SaveChangesAsync(token);
-                return true;
+                return false;
             }
-            return false;
+
+            id = id.Trim();
+            var entity = await _work.Person
+                .GetOne(x => x.Id == id, token);
+
+            if (entity is null)
+            {
+                return false;
+            }
+
+            entity = dto.Adapt(entity);
+            _work.Person.Update(entity);
+            await _work.SaveChangesAsync(token);
+            return true;
         }
         catch (Exception e)
         {
@@ -64,20 +63,23 @@ internal sealed class PersonService : IPersonService
     {
         try
         {
-            if (!string.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(id))
             {
-                id = id.Trim();
-                var entity = await _work.Person
-                    .GetOne(x => x.Id == id, token);
-                if (entity is null)
-                {
-                    return false;
-                }
-                _work.Person.Remove(entity);
-                await _work.SaveChangesAsync(token);
-                return true;
+                return false;
             }
-            return false;
+
+            id = id.Trim();
+            var entity = await _work.Person
+                .GetOne(x => x.Id == id, token);
+
+            if (entity is null)
+            {
+                return false;
+            }
+
+            _work.Person.Remove(entity);
+            await _work.SaveChangesAsync(token);
+            return true;
         }
         catch (Exception e)
         {
@@ -89,18 +91,17 @@ internal sealed class PersonService : IPersonService
     {
         try
         {
-            if (!string.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(id))
             {
-                id = id.Trim();
-                var entity = await _work.Person
-                    .GetOne(x => x.Id == id, token);
-                if (entity is null)
-                {
-                    return null;
-                }
-                return entity.Adapt<PersonDto>();
+                return null;
             }
-            return null;
+
+            id = id.Trim();
+
+            var entity = await _work.Person
+                .GetOne(x => x.Id == id, token);
+
+            return entity?.Adapt<PersonDto>();
         }
         catch (Exception e)
         {
