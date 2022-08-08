@@ -1,6 +1,6 @@
 ﻿using RI.Auth.Business;
 
-namespace RI.Auth;
+namespace RI.Auth.Api;
 
 public sealed class Startup
 {

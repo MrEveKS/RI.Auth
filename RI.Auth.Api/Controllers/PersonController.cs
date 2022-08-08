@@ -2,7 +2,7 @@
 using RI.Auth.Business.Services;
 using RI.Auth.Commons.Models;
 
-namespace RI.Auth.Controllers;
+namespace RI.Auth.Api.Controllers;
 
 [Route("[controller]/[action]")]
 public class PersonController : Controller
