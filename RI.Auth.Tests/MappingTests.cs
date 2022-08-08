@@ -20,6 +20,18 @@ public sealed class MappingTests
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(dto);
     }
+    
+    [Fact]
+    public void Person_Collection_To_PersonListDto_Collection()
+    {
+        var fixture = new Fixture();
+        var dtos = fixture.Create<List<Person>?>();
+        
+        var result = dtos.Adapt<List<PersonListDto>?>();
+
+        result.Should().NotBeNull();
+        result.Should().BeEquivalentTo(dtos);
+    }
 
     [Fact]
     public void PersonUpdateDto_To_Person()

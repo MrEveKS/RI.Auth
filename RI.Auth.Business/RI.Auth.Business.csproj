@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Mapster" Version="7.3.0"/>
+        <PackageReference Include="Mapster" Version="7.3.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\RI.Auth.DataAccess\RI.Auth.DataAccess.csproj"/>
+        <ProjectReference Include="..\RI.Auth.DataAccess\RI.Auth.DataAccess.csproj" />
     </ItemGroup>
 
 </Project>
