@@ -25,12 +25,12 @@ public sealed class MappingTests
     public void Person_Collection_To_PersonListDto_Collection()
     {
         var fixture = new Fixture();
-        var dtos = fixture.Create<List<Person>?>();
+        var entities = fixture.Create<List<Person>?>();
         
-        var result = dtos.Adapt<List<PersonListDto>?>();
+        var result = entities.Adapt<List<PersonListDto>?>();
 
         result.Should().NotBeNull();
-        result.Should().BeEquivalentTo(dtos);
+        result.Should().BeEquivalentTo(entities);
     }
 
     [Fact]
