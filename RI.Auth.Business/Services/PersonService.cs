@@ -59,6 +59,7 @@ internal sealed class PersonService : IPersonService
             throw;
         }
     }
+
     public async Task<bool> Remove(string? id, CancellationToken token = default)
     {
         try
@@ -87,6 +88,7 @@ internal sealed class PersonService : IPersonService
             throw;
         }
     }
+
     public async Task<PersonDto?> GetOne(string? id, CancellationToken token = default)
     {
         try
@@ -112,7 +114,6 @@ internal sealed class PersonService : IPersonService
 
     public async Task<List<PersonListDto>?> GetAll(CancellationToken token = default)
     {
-
         try
         {
             var entities = await _work.Person
