@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace RI.Auth.DataAccess.Repositories;
 
@@ -20,13 +20,13 @@ internal abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
     }
 
     public async Task<TEntity?> GetOne(
-    Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+        Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
     {
         return await _context.Set<TEntity>()
-                .FirstOrDefaultAsync(predicate, cancellationToken);
+            .FirstOrDefaultAsync(predicate, cancellationToken);
     }
-    
-        public async ValueTask Add(TEntity entity, CancellationToken cancellationToken)
+
+    public async ValueTask Add(TEntity entity, CancellationToken cancellationToken)
     {
         await _context.Set<TEntity>()
             .AddAsync(entity, cancellationToken);

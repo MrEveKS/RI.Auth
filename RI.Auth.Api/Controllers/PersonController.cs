@@ -19,8 +19,10 @@ public class PersonController : Controller
     {
         await _service.Add(dto, token);
     }
+
     [HttpPost("{id}")]
-    public async Task Update([FromRoute] string? id, [FromBody] PersonUpdateDto dto, CancellationToken token = default)
+    public async Task Update([FromRoute] string? id,
+        [FromBody] PersonUpdateDto dto, CancellationToken token = default)
     {
         await _service.Update(id, dto, token);
     }
@@ -28,7 +30,7 @@ public class PersonController : Controller
     [HttpDelete]
     public async Task Remove([FromQuery] string? id, CancellationToken token = default)
     {
-        await _service.Remove(id,token);
+        await _service.Remove(id, token);
     }
 
     [HttpGet("{id}")]
@@ -38,7 +40,7 @@ public class PersonController : Controller
     }
 
     [HttpPost]
-    public async Task<List<PersonListDto>?> GetAll( CancellationToken token = default)
+    public async Task<List<PersonListDto>?> GetAll(CancellationToken token = default)
     {
         return await _service.GetAll(token);
     }
